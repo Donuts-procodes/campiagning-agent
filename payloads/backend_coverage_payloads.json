@@ -1,0 +1,395 @@
+{
+  "approval_payload": {
+    "review_status": "approved",
+    "approved_variant_id": "v1",
+    "human_modifications": {
+      "note": "Approve first generated variant for integration coverage"
+    }
+  },
+  "campaign_payloads": {
+    "cold_email": {
+      "campaign_name": "Q4 Cold Email Expansion",
+      "company_name": "Acme Corp",
+      "product_service": "Cloud Security Posture Management",
+      "value_proposition": "Automate cloud compliance and detect misconfigurations across AWS, Azure, and GCP.",
+      "target_icp": "VP of Cloud Security at enterprise SaaS companies",
+      "campaign_type": "cold_email",
+      "duration_days": 30,
+      "start_date": "2026-10-01",
+      "budget": 5000.0,
+      "business_okrs": [
+        {
+          "objective": "Book enterprise security meetings",
+          "key_results": [
+            "Generate 12 qualified meetings",
+            "Reach 4% reply rate"
+          ]
+        }
+      ],
+      "target_accounts": ["Snowflake", "Datadog", "HubSpot"],
+      "target_personas": ["VP of Cloud Security", "CISO"],
+      "content_assets": ["https://docs.acme.com/cloud-compliance", "2026 Cloud Security Benchmark Report"],
+      "case_studies": [
+        "Reduced SOC2 audit prep from 3 weeks to 2 days for FinTech Unicorn",
+        "Detected 140+ critical misconfigurations in multi-cloud infra in 24 hours"
+      ],
+      "differentiators": [
+        "100% agentless setup in under 5 minutes",
+        "Zero data leaves customer VPC",
+        "Direct Jira and Slack real-time alerts"
+      ],
+      "past_winning_copy": [
+        "Hey {{first_name}}, noticed {{company_name}} expanded its AWS footprint recently. How is the team handling drift detection without slowing down sprint velocity?"
+      ],
+      "brand_tone": "direct_consultative",
+      "negative_constraints": ["synergy", "revolutionize", "free trial", "guarantee"],
+      "primary_cta": "soft_interest",
+      "sender_profile": {
+        "name": "Alex Mercer",
+        "title": "Head of Cloud Security Solutions"
+      },
+      "target_geography": "North America",
+      "pricing_tier": "mid_market",
+      "channels_allowed": ["email"],
+      "target_meetings": 12,
+      "competitors": ["Wiz", "Orca Security"]
+    },
+    "linkedin_outreach": {
+      "campaign_name": "LinkedIn Security Leaders Outreach",
+      "company_name": "Acme Corp",
+      "product_service": "Cloud Security Posture Management",
+      "value_proposition": "Reduce audit prep time and catch risky cloud drift before it becomes an incident.",
+      "target_icp": "Security and infrastructure leaders at high-growth B2B SaaS companies",
+      "campaign_type": "linkedin_outreach",
+      "duration_days": 21,
+      "start_date": "2026-10-01",
+      "budget": 3500.0,
+      "business_okrs": [
+        {
+          "objective": "Open social conversations with target buyers",
+          "key_results": [
+            "Get 30 connection accepts",
+            "Generate 8 reply conversations"
+          ]
+        }
+      ],
+      "target_personas": ["Director of Infrastructure", "CISO"],
+      "content_assets": ["https://acme.com/cloud-drift-guide"],
+      "case_studies": [
+        "Cut mean time to remediate (MTTR) cloud drift by 65% for Series B SaaS"
+      ],
+      "differentiators": [
+        "Unified multi-cloud dashboard for AWS, GCP, and Azure",
+        "No complex agents to deploy"
+      ],
+      "past_winning_copy": [
+        "Always great connecting with security practitioners tackling multi-cloud compliance. Love following your team's updates at {{company_name}}."
+      ],
+      "brand_tone": "peer_founder",
+      "negative_constraints": ["exclusive discount", "game changer"],
+      "primary_cta": "soft_interest",
+      "sender_profile": {
+        "name": "Sarah Chen",
+        "title": "Co-Founder & CTO"
+      },
+      "target_geography": "North America",
+      "pricing_tier": "mid_market",
+      "channels_allowed": ["linkedin"],
+      "success_metrics": ["connection_acceptance_rate", "dm_reply_rate"],
+      "target_meetings": 8,
+      "competitors": ["Palo Alto Prisma Cloud", "Lacework"]
+    },
+    "abm": {
+      "campaign_name": "ABM Named Accounts Q4",
+      "company_name": "Acme Corp",
+      "product_service": "Cloud Security Posture Management",
+      "value_proposition": "Give enterprise cloud teams continuous compliance monitoring and faster incident triage.",
+      "target_icp": "Enterprise SaaS companies with multi-cloud environments",
+      "campaign_type": "abm",
+      "duration_days": 45,
+      "start_date": "2026-10-01",
+      "budget": 12000.0,
+      "business_okrs": [
+        {
+          "objective": "Penetrate named enterprise accounts",
+          "key_results": [
+            "Reach 4 target accounts",
+            "Create 10 engaged stakeholder conversations"
+          ]
+        }
+      ],
+      "target_accounts": ["Salesforce", "Workday", "ServiceNow", "Atlassian"],
+      "target_personas": ["VP of Cloud Security", "CISO", "Director of Infrastructure"],
+      "content_assets": [
+        "https://acme.com/enterprise-whitepaper",
+        "ROI Case Study for Multi-Cloud Governance"
+      ],
+      "case_studies": [
+        "Saved $420k annually in redundant cloud tooling for Fortune 500 tech firm"
+      ],
+      "differentiators": [
+        "FedRAMP ready and SOC-2 Type II certified",
+        "Custom role-based access control with Okta/SAML SSO"
+      ],
+      "past_winning_copy": [
+        "Our team conducted a benchmark on infrastructure governance across top tier enterprise stacks. Would love to share the teardown tailored for {{company_name}}."
+      ],
+      "brand_tone": "enterprise_formal",
+      "negative_constraints": ["cheap", "disruptive", "quick fix"],
+      "primary_cta": "value_asset",
+      "sender_profile": {
+        "name": "Marcus Vance",
+        "title": "Enterprise Security Director"
+      },
+      "target_geography": "Global",
+      "pricing_tier": "enterprise_custom",
+      "channels_allowed": ["email", "linkedin", "call"],
+      "success_metrics": ["account_penetration", "stakeholder_engagement"],
+      "target_meetings": 15,
+      "competitors": ["Wiz", "Orca Security", "Prisma Cloud"]
+    },
+    "product_launch_pr": {
+      "campaign_name": "CSPM Launch PR Wave",
+      "company_name": "Acme Corp",
+      "product_service": "Acme CSPM 2.0",
+      "value_proposition": "Launch a faster, AI-assisted compliance workflow for cloud security teams.",
+      "target_icp": "Journalists, analysts, and security influencers covering cloud security",
+      "campaign_type": "product_launch_pr",
+      "duration_days": 14,
+      "start_date": "2026-10-01",
+      "budget": 4000.0,
+      "business_okrs": [
+        {
+          "objective": "Generate launch awareness",
+          "key_results": [
+            "Earn 10 press mentions",
+            "Drive 200 launch page visits"
+          ]
+        }
+      ],
+      "launch_url": "https://acme.com/cspm-launch",
+      "content_assets": [
+        "https://acme.com/press/v2-release",
+        "Launch press release draft"
+      ],
+      "case_studies": [
+        "Early beta customers reduced misconfiguration triage time by 70%"
+      ],
+      "differentiators": [
+        "First agentless CSPM with real-time AI auto-remediation scripts"
+      ],
+      "past_winning_copy": [
+        "We are lifting the embargo on Acme 2.0 next Tuesday. Thought you would appreciate the exclusive look at the benchmark findings before anyone else."
+      ],
+      "brand_tone": "direct_consultative",
+      "negative_constraints": ["revolutionary", "world-first", "guaranteed coverage"],
+      "primary_cta": "value_asset",
+      "sender_profile": {
+        "name": "Elena Rostova",
+        "title": "Head of Communications"
+      },
+      "target_geography": "North America",
+      "pricing_tier": "mid_market",
+      "channels_allowed": ["email", "linkedin"],
+      "success_metrics": ["press_mentions", "launch_traffic"],
+      "target_meetings": 5,
+      "competitors": ["Wiz", "Orca Security"]
+    },
+    "partner_affiliate": {
+      "campaign_name": "Partner Recruitment Sprint",
+      "company_name": "Acme Corp",
+      "product_service": "Cloud Security Posture Management",
+      "value_proposition": "Help consulting partners expand cloud security service revenue with a fast-to-implement CSPM platform.",
+      "target_icp": "Cloud consultancies and managed security partners serving enterprise SaaS clients",
+      "campaign_type": "partner_affiliate",
+      "duration_days": 30,
+      "start_date": "2026-10-01",
+      "budget": 6000.0,
+      "business_okrs": [
+        {
+          "objective": "Recruit strategic channel partners",
+          "key_results": [
+            "Onboard 5 qualified partners",
+            "Book 8 partner intro calls"
+          ]
+        }
+      ],
+      "partner_profile": "AWS Advanced Consulting Partners with enterprise SaaS customers",
+      "content_assets": [
+        "https://acme.com/partners/overview",
+        "Partner one-pager"
+      ],
+      "case_studies": [
+        "Partner CloudOps LLC added $180k ARR in advisory retainer revenue using Acme CSPM"
+      ],
+      "differentiators": [
+        "Co-branded portal and 25% recurring margin for lifetime of account"
+      ],
+      "past_winning_copy": [
+        "We see {{company_name}} delivering outstanding AWS migration projects. We built a partner revenue model specifically for teams like yours to add recurring audit margins."
+      ],
+      "brand_tone": "peer_founder",
+      "negative_constraints": ["easy money", "no effort needed"],
+      "primary_cta": "soft_interest",
+      "sender_profile": {
+        "name": "David Cole",
+        "title": "Director of Strategic Alliances"
+      },
+      "target_geography": "North America",
+      "pricing_tier": "mid_market",
+      "channels_allowed": ["email", "linkedin"],
+      "success_metrics": ["partners_onboarded", "partner_intro_calls"],
+      "target_meetings": 8,
+      "competitors": ["Wiz", "Orca Security"]
+    },
+    "content_promotion": {
+      "campaign_name": "Security Report Promotion",
+      "company_name": "Acme Corp",
+      "product_service": "Thought leadership content",
+      "value_proposition": "Offer fresh cloud security benchmark data useful to analysts, bloggers, and newsletter writers.",
+      "target_icp": "Security newsletter operators, bloggers, podcast hosts, and community leaders",
+      "campaign_type": "content_promotion",
+      "duration_days": 21,
+      "start_date": "2026-10-01",
+      "budget": 2500.0,
+      "business_okrs": [
+        {
+          "objective": "Promote anchor content and earn backlinks",
+          "key_results": [
+            "Earn 15 backlinks",
+            "Drive 300 report downloads"
+          ]
+        }
+      ],
+      "content_assets": [
+        "https://acme.com/research/2026-report",
+        "2026 State of Cloud Security Report"
+      ],
+      "case_studies": [
+        "Analyzed 1.2M anonymized cloud assets across 450 companies to identify top leak patterns"
+      ],
+      "differentiators": [
+        "Raw data charts available for embed with unbranded high-res graphics"
+      ],
+      "past_winning_copy": [
+        "Loved your recent issue analyzing cloud breaches. We just compiled raw data on 1.2M cloud configs showing an unexpected shift in IAM vulnerabilities—thought your readers might find the chart compelling."
+      ],
+      "brand_tone": "direct_consultative",
+      "negative_constraints": ["spam", "sponsored post", "backlink swap"],
+      "primary_cta": "value_asset",
+      "sender_profile": {
+        "name": "Rachel Adams",
+        "title": "Security Research Lead"
+      },
+      "target_geography": "Global",
+      "pricing_tier": "freemium_self_serve",
+      "channels_allowed": ["email", "linkedin"],
+      "success_metrics": ["backlinks_acquired", "content_downloads"],
+      "target_meetings": 5,
+      "competitors": ["Wiz", "Lacework"]
+    },
+    "retention_upsell": {
+      "campaign_name": "Expansion and Retention Motion",
+      "company_name": "Acme Corp",
+      "product_service": "CSPM Enterprise Upgrade",
+      "value_proposition": "Upgrade existing customers to advanced remediation workflows and enterprise governance reporting.",
+      "target_icp": "Existing mid-market and enterprise customers with high platform usage",
+      "campaign_type": "retention_upsell",
+      "duration_days": 30,
+      "start_date": "2026-10-01",
+      "budget": 3000.0,
+      "business_okrs": [
+        {
+          "objective": "Increase expansion revenue",
+          "key_results": [
+            "Book 10 expansion calls",
+            "Convert 3 accounts to enterprise tier"
+          ]
+        }
+      ],
+      "customer_segment": "High-usage accounts nearing governance reporting limits",
+      "trigger_event": "Account hits 80% of policy coverage threshold or adds a new cloud environment",
+      "content_assets": [
+        "https://acme.com/enterprise-upgrade-guide",
+        "Enterprise upgrade comparison sheet"
+      ],
+      "case_studies": [
+        "Enterprise tier customer automated 92% of recurring compliance audits"
+      ],
+      "differentiators": [
+        "Dedicated Customer Success Architect and 15-minute SLA"
+      ],
+      "past_winning_copy": [
+        "Hi {{first_name}}, saw your team crossed 80% policy coverage on AWS last week! Given your recent cluster expansion, wanted to show you how automated multi-cloud remediation saves 10+ engineering hours weekly."
+      ],
+      "brand_tone": "direct_consultative",
+      "negative_constraints": ["penalty", "urgent renewal", "price increase"],
+      "primary_cta": "soft_interest",
+      "sender_profile": {
+        "name": "Jordan Lee",
+        "title": "Principal Customer Success Manager"
+      },
+      "target_geography": "North America",
+      "pricing_tier": "enterprise_custom",
+      "channels_allowed": ["email", "call"],
+      "success_metrics": ["upsell_pipeline", "expansion_conversions"],
+      "target_meetings": 10,
+      "competitors": ["Wiz", "Prisma Cloud"]
+    },
+    "multi_channel": {
+      "campaign_name": "Q4 Enterprise Expansion",
+      "company_name": "Acme Corp",
+      "product_service": "Cloud Security Posture Management (CSPM)",
+      "value_proposition": "Automate cloud compliance and detect misconfigurations in real-time across AWS, Azure, and GCP.",
+      "target_icp": "VP of Cloud Security at Enterprise SaaS companies",
+      "campaign_type": "multi_channel",
+      "duration_days": 45,
+      "start_date": "2026-10-01",
+      "budget": 15000.0,
+      "business_okrs": [
+        {
+          "objective": "Expand Enterprise Market Share",
+          "key_results": [
+            "Generate 15 qualified enterprise meetings",
+            "Achieve a 5% meeting conversion rate from initial outreach"
+          ]
+        }
+      ],
+      "target_accounts": ["Salesforce", "Workday", "ServiceNow", "Atlassian"],
+      "target_personas": ["VP of Cloud Security", "CISO", "Director of Infrastructure"],
+      "content_assets": [
+        "https://docs.acme.com/overview",
+        "2026 State of Cloud Security Report"
+      ],
+      "case_studies": [
+        "How Atlassian cut compliance audit time by 50%",
+        "Prevented zero-day data exfiltration via misconfigured S3 bucket"
+      ],
+      "differentiators": [
+        "Single pane of glass for multi-cloud telemetry",
+        "Sub-second alert dispatch to PagerDuty and Slack",
+        "Zero-agent kernel-level observation"
+      ],
+      "past_winning_copy": [
+        "Hey {{first_name}}, when speaking with CISOs at pre-IPO SaaS companies, the biggest friction is always compliance drift across multi-cloud accounts. How is {{company_name}} handling continuous posture validation?"
+      ],
+      "brand_tone": "direct_consultative",
+      "negative_constraints": ["revolutionize", "cheap", "no-brainer", "synergy"],
+      "primary_cta": "hard_demo",
+      "sender_profile": {
+        "name": "Alex Mercer",
+        "title": "Head of Enterprise Solutions"
+      },
+      "target_geography": "Global",
+      "pricing_tier": "enterprise_custom",
+      "channels_allowed": ["email", "linkedin", "call"],
+      "success_metrics": ["meetings_booked", "account_engagement", "channel_reply_rate"],
+      "target_meetings": 15,
+      "competitors": ["Wiz", "Orca Security", "Palo Alto Prisma Cloud"],
+      "launch_url": "https://acme.com/cspm-launch",
+      "partner_profile": "AWS Advanced Consulting Partners",
+      "customer_segment": "High-growth pre-IPO SaaS",
+      "trigger_event": "Recent funding round or CISO leadership change"
+    }
+  }
+}

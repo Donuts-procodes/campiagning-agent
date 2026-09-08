@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifestVersion": "1.0.0",
+  "agent": {
+    "id": "campaigning-agent-001",
+    "type": "campaign_orchestration",
+    "name": "Campaign Strategy Assistant",
+    "slug": "campaigning-assistant",
+    "version": "2.0.0",
+    "description": "Autonomous multi-agent campaigning platform that handles outreach strategy, messaging creation, compliance verification, lead collection, lightweight CRM workflows, and channel dispatch across political, advocacy, and custom campaign types.",
+    "service": {
+      "port": 8000,
+      "protocol": "http",
+      "healthEndpoint": "/api/health",
+      "chatEndpoint": "/ws",
+      "apiPrefix": "/api"
+    },
+    "runtime": {
+      "framework": "FastAPI",
+      "language": "Python 3.11+",
+      "vectorEngine": "Milvus",
+      "sessionStore": "In-Memory / Postgres",
+      "persistence": "CouchDB"
+    }
+  },
+  "rolesAndPermissions": [
+    {
+      "role": "CampaignManager",
+      "description": "Full access to manage all outreach strategies, budgets, and dispatch.",
+      "permissions": [
+        "campaigns:read_all",
+        "campaigns:create",
+        "campaigns:approve",
+        "campaigns:dispatch",
+        "messaging:manage",
+        "budgets:override"
+      ]
+    },
+    {
+      "role": "FieldOrganizer",
+      "description": "Field organizer with access to outreach scripts and canvassing coordination.",
+      "permissions": [
+        "campaigns:read_own",
+        "messaging:read",
+        "canvassing:manage"
+      ]
+    }
+  ],
+  "pipelinesAndTools": [
+    {
+      "name": "voter_segment_analysis",
+      "type": "research",
+      "description": "Identifies high-priority voter segments and recommends outreach channel allocations."
+    },
+    {
+      "name": "get_historical_turnout",
+      "type": "analytics",
+      "description": "Retrieves historical voter turnout data for the target district."
+    },
+    {
+      "name": "get_outreach_engagement_metrics",
+      "type": "analytics",
+      "description": "Retrieves historical engagement rates for phone banking, SMS, and canvassing."
+    }
+  ],
+  "guardrails": {
+    "avoidRules": [
+      "Do not exceed the specified budget cap under any circumstances.",
+      "Do not generate content that makes false claims about candidates or opponents.",
+      "All SMS messages must include a compliant opt-out footer.",
+      "Do not generate personal attacks; contrast on policy positions only."
+    ]
+  }
+}

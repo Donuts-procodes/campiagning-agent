@@ -1,0 +1,23 @@
+flowchart LR
+    subgraph Upstream ["Campaign Strategy Agent"]
+        STRATEGY["1. Strategy & Budget\n(ROAS & CAC Targets)"]
+        ADS["2. Media Execution\n(Meta, Google, Inbound Forms)"]
+        STRATEGY --> ADS
+    end
+
+    subgraph Midstream ["Inbound Data Collection"]
+        LEAD_IN["Web Forms, Ad Conversions,\nDemo Requests, Webhooks"]
+        ADS -->|Acquires Prospects| LEAD_IN
+    end
+
+    subgraph Downstream ["CRM Workspace (Built-in)"]
+        CRM["Lead Records & Attribution\n(Linked by campaign_thread_id)"]
+        STATUS["Status Pipeline\n(New -> Qualified -> Converted)"]
+        LEAD_IN --> CRM --> STATUS
+    end
+
+    subgraph FeedbackLoop ["Closed-Loop Learning"]
+        ACTUALS["Actual CAC & Conversion Rates"]
+        STATUS --> ACTUALS
+        ACTUALS -.->|Historical ROAS/CAC Data| STRATEGY
+    end

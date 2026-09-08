@@ -1,0 +1,179 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-campaign}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-campaign_secret}
+      POSTGRES_DB: ${POSTGRES_DB:-campaign_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-campaign} -d ${POSTGRES_DB:-campaign_db}"]
+      interval: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 5
+
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.16
+    environment:
+      ETCD_AUTO_COMPACTION_MODE: revision
+      ETCD_AUTO_COMPACTION_RETENTION: "1000"
+      ETCD_QUOTA_BACKEND_BYTES: "4294967296"
+      ETCD_SNAPSHOT_COUNT: "50000"
+    volumes:
+      - etcddata:/etcd
+    command: >
+      etcd
+      --advertise-client-urls=http://127.0.0.1:2379
+      --listen-client-urls=http://0.0.0.0:2379
+      --data-dir=/etcd
+      --initial-advertise-peer-urls=http://127.0.0.1:2380
+      --listen-peer-urls=http://0.0.0.0:2380
+      --initial-cluster=default=http://127.0.0.1:2380
+
+  minio:
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    ports:
+      - "9001:9001"
+    volumes:
+      - miniodata:/minio_data
+    command: minio server /minio_data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      retries: 5
+
+  milvus:
+    image: milvusdb/milvus:v2.4.4
+    command: ["milvus", "run", "standalone"]
+    environment:
+      ETCD_ENDPOINTS: etcd:2379
+      MINIO_ADDRESS: minio:9000
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    volumes:
+      - milvusdata:/var/lib/milvus
+    depends_on:
+      etcd:
+        condition: service_started
+      minio:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 10s
+      retries: 10
+
+  couchdb:
+    image: couchdb:3
+    environment:
+      COUCHDB_USER: ${COUCHDB_USER:-admin}
+      COUCHDB_PASSWORD: ${COUCHDB_PASSWORD:-admin_secret}
+    ports:
+      - "5984:5984"
+    volumes:
+      - couchdata:/opt/couchdb/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5984/_up"]
+      interval: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DSN: ${POSTGRES_DSN:-postgresql://campaign:campaign_secret@postgres:5432/campaign_db}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      MILVUS_HOST: ${MILVUS_HOST:-milvus}
+      MILVUS_PORT: ${MILVUS_PORT:-19530}
+      COUCHDB_URL: ${COUCHDB_URL:-http://admin:admin_secret@couchdb:5984}
+      WATCHFILES_FORCE_POLLING: "true"
+    volumes:
+      - ./src:/app/src
+      - ./agent_manifest.json:/app/agent_manifest.json:ro
+      - ./agent_config.json:/app/agent_config.json:ro
+    command: ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      milvus:
+        condition: service_healthy
+      couchdb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 10s
+      retries: 10
+
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "-m", "pytest", "src/tests", "-v", "--tb=short"]
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DSN: ${POSTGRES_DSN:-postgresql://campaign:campaign_secret@postgres:5432/campaign_db}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      MILVUS_HOST: ${MILVUS_HOST:-milvus}
+      MILVUS_PORT: ${MILVUS_PORT:-19530}
+      COUCHDB_URL: ${COUCHDB_URL:-http://admin:admin_secret@couchdb:5984}
+    volumes:
+      - ./src:/app/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      milvus:
+        condition: service_healthy
+      couchdb:
+        condition: service_healthy
+    profiles:
+      - test
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5173"]
+    depends_on:
+      app:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  redisdata:
+  etcddata:
+  miniodata:
+  milvusdata:
+  couchdata:

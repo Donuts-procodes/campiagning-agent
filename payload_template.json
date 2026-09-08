@@ -1,0 +1,55 @@
+{
+  "campaign_name": "Q4 Enterprise Expansion",
+  "company_name": "Acme Corp",
+  "product_service": "Cloud Security Posture Management (CSPM)",
+  "value_proposition": "Automate cloud compliance and detect misconfigurations in real-time across AWS, Azure, and GCP.",
+  "target_icp": "VP of Cloud Security at Enterprise SaaS companies",
+  "campaign_type": "multi_channel",
+  "duration_days": 45,
+  "start_date": "2026-10-01",
+  
+  "business_okrs": [
+    {
+      "objective": "Expand Enterprise Market Share",
+      "key_results": [
+        "Generate 15 qualified enterprise meetings",
+        "Achieve a 5% meeting conversion rate from initial outreach"
+      ]
+    }
+  ],
+  
+  "target_accounts": [
+    "Salesforce",
+    "Workday",
+    "ServiceNow",
+    "Atlassian"
+  ],
+  "target_personas": [
+    "VP of Cloud Security",
+    "CISO",
+    "Director of Infrastructure"
+  ],
+  
+  "content_assets": [
+    "2026 State of Cloud Security Report",
+    "Case Study: How Atlassian cut compliance audit time by 50%"
+  ],
+  
+  "channels_allowed": [
+    "email",
+    "linkedin",
+    "call"
+  ],
+  "target_meetings": 15,
+  
+  "competitors": [
+    "Wiz",
+    "Orca Security",
+    "Palo Alto Prisma Cloud"
+  ],
+
+  "launch_url": "https://acme.com/cspm-launch",
+  "partner_profile": "AWS Advanced Consulting Partners",
+  "customer_segment": "High-growth pre-IPO SaaS",
+  "trigger_event": "Recent funding round or CISO leadership change"
+}
